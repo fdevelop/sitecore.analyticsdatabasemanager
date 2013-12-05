@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{50E5ED6E-879A-42E5-AA27-1472785CD28C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sitecore.AnalyticsDatabaseManager</RootNamespace>
+    <AssemblyName>Sitecore.AnalyticsDatabaseManager</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Sitecore.Analytics">
+      <HintPath>bin\Sitecore.Analytics.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Sitecore.Kernel">
+      <HintPath>bin\Sitecore.Kernel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="sitecore modules\Shell\Analytics Database Manager\Jobs\BackupDatabaseRunner.cs" />
+    <Compile Include="sitecore modules\Shell\Analytics Database Manager\Jobs\CleanAllRunner.cs" />
+    <Compile Include="sitecore modules\Shell\Analytics Database Manager\Jobs\CleanFilteredBounceSessionsRunner.cs" />
+    <Compile Include="sitecore modules\Shell\Analytics Database Manager\Jobs\CleanFilteredCustomRuleRunner.cs" />
+    <Compile Include="sitecore modules\Shell\Analytics Database Manager\Jobs\CleanFilteredOlderThanRunner.cs" />
+    <Compile Include="sitecore modules\Shell\Analytics Database Manager\Jobs\JobRunnerBase.cs" />
+    <Compile Include="sitecore modules\Shell\Analytics Database Manager\Jobs\RebuildIndexRunner.cs" />
+    <Compile Include="sitecore modules\Shell\Analytics Database Manager\Jobs\RemoveBotsRunner.cs" />
+    <Compile Include="sitecore modules\Shell\Analytics Database Manager\Jobs\SynchronizeDefinitionsToDatabaseRunner.cs" />
+    <Compile Include="sitecore modules\Shell\Analytics Database Manager\Logic\AnalyticsDatabaseHelper.cs" />
+    <Compile Include="sitecore modules\Shell\Analytics Database Manager\Logic\AnalyticsDatabaseService.cs" />
+    <Compile Include="sitecore modules\Shell\Analytics Database Manager\Logic\SqlSettingConstraintsException.cs" />
+    <Compile Include="sitecore modules\Shell\Analytics Database Manager\Logic\Util.cs" />
+    <Compile Include="sitecore modules\Shell\Analytics Database Manager\UI\RunAnalyticsDatabaseManager.form.cs" />
+    <Compile Include="sitecore modules\Shell\Analytics Database Manager\UI\RunAnalyticsDatabaseManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="sitecore modules\Shell\Analytics Database Manager\UI\AnalyticsDatabaseManager.css" />
+    <Content Include="sitecore modules\Shell\Analytics Database Manager\UI\RunAnalyticsDatabaseManager.xml">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App_Config\Include\Sitecore.AnalyticsDatabaseManager.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

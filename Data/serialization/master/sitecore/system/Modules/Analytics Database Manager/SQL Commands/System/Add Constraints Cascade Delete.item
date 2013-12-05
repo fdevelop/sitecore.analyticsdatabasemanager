@@ -1,0 +1,94 @@
+----item----
+version: 1
+id: {0D474A29-AF58-439A-A0D1-FD9E10BAC01E}
+database: master
+path: /sitecore/system/Modules/Analytics Database Manager/SQL Commands/System/Add Constraints Cascade Delete
+parent: {D97ADCA5-05B9-43C7-B35F-5F4CA414A318}
+name: Add Constraints Cascade Delete
+master: {00000000-0000-0000-0000-000000000000}
+template: {606FDC95-7966-45EC-9362-10A0E4C00EE8}
+templatekey: Analytics Database Manager SQL Command
+
+----field----
+field: {94ABF729-D2A4-4160-9DA0-B182FD4439B6}
+name: SqlServer
+key: sqlserver
+content-length: 4291
+
+ALTER TABLE [Pages] ADD CONSTRAINT [FK_Pages_Visitors] FOREIGN KEY(VisitorId)REFERENCES [Visitors](VisitorId);
+ALTER TABLE [Pages] ADD CONSTRAINT [FK_Pages_Visits] FOREIGN KEY(VisitId)REFERENCES [Visits](VisitId) ON DELETE CASCADE;
+ALTER TABLE [Profiles] ADD CONSTRAINT [FK_Profiles_Visitors] FOREIGN KEY(VisitorId)REFERENCES [Visitors](VisitorId);
+ALTER TABLE [Profiles] ADD CONSTRAINT [FK_Profile_Visits] FOREIGN KEY(VisitId)REFERENCES [Visits](VisitId) ON DELETE CASCADE;
+ALTER TABLE [VisitorTags] ADD CONSTRAINT [FK_VisitorTags_Visitors] FOREIGN KEY(VisitorId)REFERENCES [Visitors](VisitorId)  ON DELETE CASCADE;
+ALTER TABLE [Visits] ADD CONSTRAINT [FK_Visits_Visitors] FOREIGN KEY(VisitorId)REFERENCES [Visitors](VisitorId)  ON DELETE CASCADE;
+ALTER TABLE [AutomationStates] ADD CONSTRAINT [FK_AutomationStates_Visitors] FOREIGN KEY(VisitorId)REFERENCES [Visitors](VisitorId)  ON DELETE CASCADE;
+ALTER TABLE [ReferringSites] ADD CONSTRAINT [FK_ReferringSites_TrafficTypes] FOREIGN KEY(TrafficType)REFERENCES [TrafficTypes](TrafficType)  ON DELETE CASCADE;
+ALTER TABLE [GeoIps] ADD CONSTRAINT [FK_GeoIps_VisitorClassification] FOREIGN KEY(VisitorClassification)REFERENCES [VisitorClassifications](VisitorClassification)  ON DELETE CASCADE;
+ALTER TABLE [Locations] ADD CONSTRAINT [FK_Locations_VisitorClassification] FOREIGN KEY(VisitorClassification)REFERENCES [VisitorClassifications](VisitorClassification)  ON DELETE CASCADE;
+ALTER TABLE [Automations] ADD CONSTRAINT [FK_Automation_Campaign] FOREIGN KEY(Campaignid)REFERENCES [Campaigns](CampaignId)  ON DELETE CASCADE;
+ALTER TABLE [Visitors] ADD CONSTRAINT [FK_Visitors_VisitorClassification] FOREIGN KEY(VisitorClassification)REFERENCES [VisitorClassifications](VisitorClassification)  ON DELETE CASCADE;
+ALTER TABLE [Visitors] ADD CONSTRAINT [FK_Visitors_VisitorClassification1] FOREIGN KEY(OverrideVisitorClassification)REFERENCES [VisitorClassifications](VisitorClassification);
+ALTER TABLE [UserAgents] ADD CONSTRAINT [FK_UserAgents_VisitorClassification] FOREIGN KEY(VisitorClassification)REFERENCES [VisitorClassifications](VisitorClassification)  ON DELETE CASCADE;
+ALTER TABLE [NotificationSubscriptions] ADD CONSTRAINT [FK_NotificationSubscriptions_Locations] FOREIGN KEY(LocationId)REFERENCES [Locations](LocationId)  ON DELETE CASCADE;
+ALTER TABLE [AutomationStates] ADD CONSTRAINT [FK_MarketingAutomationStates_MarketingAutomations] FOREIGN KEY(AutomationId)REFERENCES [Automations](AutomationId)  ON DELETE CASCADE;
+ALTER TABLE [Visits] ADD CONSTRAINT [FK_Visits_Browsers] FOREIGN KEY(BrowserId)REFERENCES [Browsers](BrowserId)  ON DELETE CASCADE;
+ALTER TABLE [Visits] ADD CONSTRAINT [FK_Visits_Campaigns] FOREIGN KEY(CampaignId)REFERENCES [Campaigns](CampaignId)  ON DELETE CASCADE;
+ALTER TABLE [Visits] ADD CONSTRAINT [FK_Visits_GeoIps] FOREIGN KEY(Ip)REFERENCES [GeoIps](Ip);
+ALTER TABLE [Visits] ADD CONSTRAINT [FK_Visits_Keywords] FOREIGN KEY(KeywordsId)REFERENCES [Keywords](KeywordsId)  ON DELETE CASCADE;
+ALTER TABLE [Visits] ADD CONSTRAINT [FK_Visits_Locations] FOREIGN KEY(LocationId)REFERENCES [Locations](LocationId);
+ALTER TABLE [Visits] ADD CONSTRAINT [FK_Visits_OS] FOREIGN KEY(OsId)REFERENCES [OS](OsId)  ON DELETE CASCADE;
+ALTER TABLE [Visits] ADD CONSTRAINT [FK_Visits_ReferringSites] FOREIGN KEY(ReferringSiteId)REFERENCES [ReferringSites](ReferringSiteId)  ON DELETE CASCADE;
+ALTER TABLE [Visits] ADD CONSTRAINT [FK_Visits_Screens] FOREIGN KEY(ScreenId)REFERENCES [Screens](ScreenId)  ON DELETE CASCADE;
+ALTER TABLE [Visits] ADD CONSTRAINT [FK_Visits_TrafficTypes] FOREIGN KEY(TrafficType)REFERENCES [TrafficTypes](TrafficType);
+ALTER TABLE [Visits] ADD CONSTRAINT [FK_Visits_UserAgents] FOREIGN KEY(UserAgentId)REFERENCES [UserAgents](UserAgentId);
+ALTER TABLE [PageEvents] ADD CONSTRAINT [FK_PageEvents_PageEventDefinitions] FOREIGN KEY(PageEventDefinitionId)REFERENCES [PageEventDefinitions](PageEventDefinitionId)  ON DELETE CASCADE;
+ALTER TABLE [PageEvents] ADD CONSTRAINT [FK_PageEvents_Pages] FOREIGN KEY(PageId)REFERENCES [Pages](PageId)  ON DELETE CASCADE;
+ALTER TABLE [PageEvents] ADD CONSTRAINT [FK_PageEvents_Visitors] FOREIGN KEY(VisitorId)REFERENCES [Visitors](VisitorId);
+ALTER TABLE [PageEvents] ADD CONSTRAINT [FK_PageEvents_Visits] FOREIGN KEY(VisitId)REFERENCES [Visits](VisitId);
+----version----
+language: en
+version: 1
+revision: d61ab45b-e3f3-4c17-af3d-1d0e2a4b707b
+
+----field----
+field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
+name: __Owner
+key: __owner
+content-length: 14
+
+sitecore\admin
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 15
+
+20111017T204300
+----field----
+field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
+name: __Created by
+key: __created by
+content-length: 14
+
+sitecore\admin
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+d61ab45b-e3f3-4c17-af3d-1d0e2a4b707b
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 34
+
+20130122T193237:634944799573924132
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 14
+
+sitecore\admin

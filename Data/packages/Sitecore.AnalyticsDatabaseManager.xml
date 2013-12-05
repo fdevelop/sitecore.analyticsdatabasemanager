@@ -1,0 +1,218 @@
+<project>
+  <Metadata>
+    <metadata>
+      <PackageName>Analytics Database Manager</PackageName>
+      <Author>Sitecore Support</Author>
+      <Version>2.0.0 rev.130301</Version>
+      <Revision />
+      <License />
+      <Comment />
+      <Attributes />
+      <Readme>Analytics Database Manager 2.0
+
+Prerequisites:
+• Sitecore CMS 6.5 - 6.6
+• Sitecore DMS for SQL Server
+
+Notes:
+Choose the 'restart client' option on the final
+step of this wizard.
+
+Usage:
+1. Install the package
+2. Go to 'Control Panel' -&gt; 'Analytics'
+-&gt; 'Analytics Database Manager'
+3. Select the certain task and run it.</Readme>
+      <Publisher>Sitecore Support</Publisher>
+      <PostStep />
+      <PackageID />
+    </metadata>
+  </Metadata>
+  <SaveProject>True</SaveProject>
+  <Sources>
+    <xitems>
+      <Entries>
+        <x-item>/core/sitecore/content/Applications/Control Panel/Analytics/Analytics Database Manager/{7113A7E6-B914-4D13-951A-387BB0989713}/invariant/0</x-item>
+      </Entries>
+      <SkipVersions>False</SkipVersions>
+      <Converter>
+        <ItemToEntryConverter>
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Undefined</ItemMode>
+                  <ItemMergeMode>Undefined</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
+        </ItemToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>Content Item</Name>
+    </xitems>
+    <xfiles>
+      <Entries>
+        <x-item>/bin/Sitecore.AnalyticsDatabaseManager.dll</x-item>
+      </Entries>
+      <Converter>
+        <FileToEntryConverter>
+          <Root>/</Root>
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Undefined</ItemMode>
+                  <ItemMergeMode>Undefined</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
+        </FileToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>Dll</Name>
+    </xfiles>
+    <xfiles>
+      <Entries>
+        <x-item>/sitecore modules/Shell/Analytics Database Manager/UI/AnalyticsDatabaseManager.css</x-item>
+        <x-item>/sitecore modules/Shell/Analytics Database Manager/UI/RunAnalyticsDatabaseManager.xml</x-item>
+      </Entries>
+      <Converter>
+        <FileToEntryConverter>
+          <Root>/</Root>
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Undefined</ItemMode>
+                  <ItemMergeMode>Undefined</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
+        </FileToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>UI</Name>
+    </xfiles>
+    <xfiles>
+      <Entries>
+        <x-item>/App_Config/Include/Sitecore.AnalyticsDatabaseManager.config</x-item>
+      </Entries>
+      <Converter>
+        <FileToEntryConverter>
+          <Root>/</Root>
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Undefined</ItemMode>
+                  <ItemMergeMode>Undefined</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
+        </FileToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>Config</Name>
+    </xfiles>
+    <items>
+      <Database>master</Database>
+      <Root>{AB91530E-D7F9-4BD6-9045-64B389EA7683}</Root>
+      <SkipVersions>False</SkipVersions>
+      <Converter>
+        <ItemToEntryConverter>
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Undefined</ItemMode>
+                  <ItemMergeMode>Undefined</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
+        </ItemToEntryConverter>
+      </Converter>
+      <Include>
+        <ItemNameFilter>
+          <Pattern />
+          <FilterSearchType>Simple</FilterSearchType>
+        </ItemNameFilter>
+        <ItemDateFilter>
+          <FilterType>CreatedFilter</FilterType>
+          <NotOlderThan />
+          <ActionDateTo />
+          <ActionDateFrom />
+        </ItemDateFilter>
+        <ItemDateFilter>
+          <FilterType>ModifiedFilter</FilterType>
+          <NotOlderThan />
+          <ActionDateTo />
+          <ActionDateFrom />
+        </ItemDateFilter>
+        <ItemPublishFilter>
+          <PublishDate />
+          <CheckWorkflow>True</CheckWorkflow>
+        </ItemPublishFilter>
+        <ItemTemplateFilter>
+          <Templates />
+        </ItemTemplateFilter>
+        <ItemUserFilter>
+          <FilterType>Created</FilterType>
+          <Accounts />
+        </ItemUserFilter>
+        <ItemUserFilter>
+          <FilterType>Modified</FilterType>
+          <Accounts />
+        </ItemUserFilter>
+        <ItemLanguageFilter>
+          <Languages />
+        </ItemLanguageFilter>
+      </Include>
+      <Exclude />
+      <Name>Content Items - settings</Name>
+    </items>
+    <xitems>
+      <Entries>
+        <x-item>/master/sitecore/templates/System/Analytics/Analytics Database Manager SQL Command/{606FDC95-7966-45EC-9362-10A0E4C00EE8}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/System/Analytics/Analytics Database Manager SQL Command/Queries/{26F45E05-62ED-476E-B8D8-270287542AEB}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/System/Analytics/Analytics Database Manager SQL Command/Queries/Oracle/{BD8720A8-EF8A-4C24-9226-BA375A58B08F}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/System/Analytics/Analytics Database Manager SQL Command/Queries/SqlServer/{94ABF729-D2A4-4160-9DA0-B182FD4439B6}/invariant/0</x-item>
+      </Entries>
+      <SkipVersions>False</SkipVersions>
+      <Converter>
+        <ItemToEntryConverter>
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Undefined</ItemMode>
+                  <ItemMergeMode>Undefined</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
+        </ItemToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>Settings template</Name>
+    </xitems>
+  </Sources>
+  <Converter>
+    <TrivialConverter>
+      <Transforms />
+    </TrivialConverter>
+  </Converter>
+  <Include />
+  <Exclude />
+  <Name />
+</project>

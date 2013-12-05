@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<control xmlns:def="Definition" xmlns="http://schemas.sitecore.net/Visual-Studio-Intellisense">
+  <Sitecore.AnalyticsDatabaseManager>
+    <WizardForm CodeBeside="Sitecore.AnalyticsDatabaseManager.UI.RunAnalyticsDatabaseManagerForm, Sitecore.AnalyticsDatabaseManager">
+      <link rel="stylesheet" type="text/css" href="/sitecore modules/Shell/Analytics Database Manager/UI/AnalyticsDatabaseManager.css" />
+      
+      <WizardFormFirstPage ID="FirstPage" Icon="Business/32x32/data_refresh.png">
+        <Border Class="scWizardWelcomeTitle"><Literal ID="Welcome" Text="Welcome to the Analytics Database Manager."/></Border>
+        <Literal Text="This wizard helps you:"/>
+        <ul>
+          <li class="scWizardBullet">
+            <Literal Text="Clean up the unnecessary data from the Analytics database."/>
+          </li>
+          <li class="scWizardBullet">
+            <Literal Text="Remove BOTs visitors."/>
+          </li>
+          <li class="scWizardBullet">
+            <Literal Text="Perform the indexes rebuilding of the Analytics database."/>
+          </li>
+          <li class="scWizardBullet">
+            <Literal Text="Quickly create a backup of the analytics data."/>
+          </li>
+          <li class="scWizardBullet">
+            <Literal Text="Synchronize the Analytics Definitions to use the clean Analytics database on the existing solution."/>
+          </li>
+        </ul>
+      </WizardFormFirstPage>
+
+      <WizardFormPage ID="Actions" Header="Actions" Text="Select the task that you want to perform." Icon="Business/32x32/data_refresh.png">
+        <WizardFormIndent>
+          <div class="PageRadioButtons">
+            <Radiobutton ID="CleanAllButton" Name="Action" Value="CleanAll" Header="Clean all Analytics Data">
+                <Literal Text="Remove all the stored analytics data without affecting the definition data" Class="WizardComment" />
+            </Radiobutton>
+            <Radiobutton ID="CleanFilteredButton" Name="Action" Value="CleanFiltered" Header="Clean Analytics Data by the specified criteria">
+                <Literal Text="Remove the stored analytics data, which matches the specified filter. The definition data will not be affected." Class="WizardComment" />
+            </Radiobutton>
+            <Radiobutton ID="RemoveBotsButton" Name="Action" Value="RemoveBots" Header="Remove all BOTs visitors">
+                <Literal Text="Remove all the visitors, that were classified as a BOT (where classification value is greater than 900)." Class="WizardComment" />
+            </Radiobutton>
+            <Radiobutton ID="RebuildIndexButton" Name="Action" Value="RebuildIndex" Header="Rebuild index">
+                <Literal Text="Rebuild indexes in the Sitecore Analytics database. If SQL Server Enterprise is used, it is possible to use the online rebuilding. Otherwise, it needs to disable Analytics first." Class="WizardComment" />
+            </Radiobutton>
+            <Radiobutton ID="BackupDatabaseButton" Name="Action" Value="BackupDatabase" Header="Create backup of Analytics database">
+                <Literal Text="Create a backup of the current Analytics database." Class="WizardComment" />
+            </Radiobutton>
+            <Radiobutton ID="SyncDefinitionsButton" Name="Action" Value="SyncDefinitions" Header="Synchronize Analytics Definitions">
+                <Literal Text="Copy the Analytics definition data from content items of the master database to the Analytics database." Class="WizardComment" />
+            </Radiobutton>
+          </div>
+        </WizardFormIndent>
+      </WizardFormPage>
+
+      <WizardFormPage ID="Options" Header="Options" Text="Setup the selected task's parameters." Icon="Business/32x32/data_refresh.png">
+        <WizardFormIndent>
+          <Border ID="CleanAllOptions">
+            <Groupbox Header="Cleanup settings">
+              <Checkbox ID="CleanAllCleanIpData" Header="Clean GeoIP Lookup Data as well" />
+            </Groupbox>
+          </Border>
+          <Border ID="CleanFilteredOptions">
+            <div class="PageRadioButtons">
+              <Radiobutton ID="CleanFilteredOlderThanButton" Name="FilterAction" Value="CleanFiltersOlderThan" Header="Clean old data">
+                <div class="SubSection">
+                  <Literal Text="Clean visits that are older than:" />
+                  <div class="TopIndent">
+                    <DateTimePicker ID="CleanFilteredOlderThanDateTime" ShowTime="false" />
+                  </div>
+                </div>
+              </Radiobutton>
+              <Radiobutton ID="CleanFilteredBounceButton" Name="FilterAction" Value="CleanFilteredBounce" Header="Clean bounce visits">
+                <div class="SubSection">
+                  <Literal Text="Clean visits that have only one visited page" />
+                </div>
+              </Radiobutton>
+              <Radiobutton ID="CleanFilteredCustomButton" Name="FilterAction" Value="CleanFilteredCustom" Header="Clean by custom rule">
+                <div class="SubSection">
+                  <Literal Text="Clean data where:" />
+                  <div class="TopIndent">
+                    <Combobox ID="CleanFilteredCustomColumnEdit">
+                      <ListItem Header="DeviceName" Value="DeviceName" />
+                      <ListItem Header="Language" Value="Language" />
+                      <ListItem Header="LocationId" Value="LocationId" />
+                      <ListItem Header="MultiSite" Value="MultiSite" />
+                      <ListItem Header="ReferringSiteId" Value="ReferringSiteId" />
+                      <ListItem Header="UserAgentId" Value="UserAgentId" />
+                      <ListItem Header="TrafficType" Value="TrafficType" />
+                    </Combobox>
+                    &#61;
+                    <Edit ID="CleanFilteredCustomValueEdit" Value="" />
+                  </div>
+                </div>
+              </Radiobutton>
+            </div>
+          </Border>
+          <Border ID="RebuildIndexOptions">
+            <Groupbox Header="Rebuild index settings">
+              <Checkbox ID="RebuildIndexLive" Header="Online Mode (only for SQL Server enterprise)" />
+            </Groupbox>
+          </Border>
+          <Border ID="BackupDatabaseOptions">
+            <Literal Text="Set backup's location:" />
+            <div class="TopIndent" style="padding-right:32px;">
+              <div style="width: 100%; ">
+                <Edit ID="BackupDatabaseLocationEdit" type="text" style="width: 100%; float:left;" />
+              </div>
+            </div>
+          </Border>
+        </WizardFormIndent>
+      </WizardFormPage>
+      
+      <WizardFormPage ID="Ready" Header="Ready" Text="Click Start to execute the task." Icon="Business/32x32/data_refresh.png">
+        <WizardFormIndent>
+          <Literal ID="ReadyStateMessage" Text=""/>
+        </WizardFormIndent>
+      </WizardFormPage>
+
+      <WizardFormPage ID="Running" Header="Proceeding" Text="Proceeding..." Icon="Business/32x32/data_refresh.png">
+        <GridPanel Width="100%">
+          <Space Height="64"/>
+
+          <ThemedImage Src="Business/48x48/data_refresh.png" Width="48" Height="48" GridPanel.Align="center"/>
+
+          <Space Height="16"/>
+
+          <Border Align="center">
+            <ThemedImage Src="Images/progress.gif" Width="94" Height="17"/>
+          </Border>
+
+          <Space Height="16"/>
+
+          <Border ID="ProceedingText" Align="center" GridPanel.Align="center" GridPanel.Style="font-weight:bold">
+            <Literal Text="Proceeding..."/>
+          </Border>
+          <Space Height="16"/>
+          <Border ID="Status" Align="center" GridPanel.Align="center">
+            &#160;
+          </Border>
+
+        </GridPanel>
+      </WizardFormPage>
+
+      <WizardFormPage ID="Retry" Header="Error" Text="An error occurred while performing the task." Icon="Business/32x32/data_refresh.png">
+        <WizardFormPadding>
+          <GridPanel Width="100%" Height="100%" Fixed="true">
+            <Memo ID="ErrorText" ReadOnly="true" Width="100%" Height="100%"/>
+          </GridPanel>
+        </WizardFormPadding>
+      </WizardFormPage>
+
+      <WizardFormLastPage ID="LastPage" Icon="Business/32x32/data_refresh.png">
+        <GridPanel Cellpadding="2" Width="100%" Height="100%" Fixed="true">
+
+          <Border GridPanel.Style="padding:0px 0px 16px 0px; font-weight:bold">
+            <Literal Text="The wizard has completed. Click Finish to close the wizard."/>
+          </Border>
+
+          <Border GridPanel.Style="padding:0px 0px 2px 0px">
+            <Literal Text="Result:"/>
+          </Border>
+
+          <Memo ID="ResultText" ReadOnly="true" Width="100%" Height="100%" GridPanel.Height="100%"/>
+
+        </GridPanel>
+      </WizardFormLastPage>
+
+    </WizardForm>
+  </Sitecore.AnalyticsDatabaseManager>
+</control>
